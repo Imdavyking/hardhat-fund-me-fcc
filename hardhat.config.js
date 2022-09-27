@@ -13,7 +13,6 @@ module.exports = {
   namedAccounts: {
     deployer: {
       default: 0,
-      4: 1,
     },
   },
   defaultNetwork: "hardhat",

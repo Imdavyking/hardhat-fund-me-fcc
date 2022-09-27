@@ -15,8 +15,8 @@ require("dotenv").config();
 module.exports = async ({ getNamedAccounts, deployments }) => {
   const { deploy, log } = deployments;
   const { deployer } = await getNamedAccounts();
+
   const chainId = network.config.chainId;
-  console.log(chainId);
 
   // when going for localhost hardhat network we want to use a mock.
   let ethUsdPriceFeedAddress;
@@ -27,11 +27,11 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     ethUsdPriceFeedAddress = networkConfig[chainId]["ethUsdPriceFeed"];
   }
 
-  const args = [ethUsdPriceFeedAddress];
+  const arguments = [ethUsdPriceFeedAddress];
 
   const fundMe = await deploy("FundMe", {
     from: deployer,
-    args: args,
+    args: arguments,
     log: true,
     waitConfirmations: network.config.blockConfirmations || 1,
   });
@@ -40,7 +40,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     !developmentChains.includes(network.name) &&
     process.env.ETHERSCAN_API_KEY
   ) {
-    await verify(fundMe.address, args);
+    await verify(fundMe.address, arguments);
   }
 };
 

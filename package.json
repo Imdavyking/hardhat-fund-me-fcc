@@ -1,4 +1,7 @@
 {
+  "name": "hardhat fund me",
+  "author": "Akachukwu David",
+  "version": "1.0.0",
   "devDependencies": {
     "@chainlink/contracts": "^0.4.1",
     "@ethersproject/abi": "^5.4.7",
